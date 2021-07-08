@@ -1,0 +1,25 @@
+Package: spatialBB
+Title: Spatially adaptive smoothing using a brand and bound algorithm
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Laura",
+           family = "Marshall",
+           role = c("aut", "cre"),
+           email = "lhm@st-andrews.ac.uk")
+Description: This package uses a branch and bound algorithm to select
+    specific knot locations in order to perform spatially adaptive
+    smoothing. More knot locations in specific areas will allow for more
+    flexibilty where required.
+License: MIT + file LICENSE
+Imports: 
+    stats
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1

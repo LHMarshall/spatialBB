@@ -1,0 +1,75 @@
+---
+title: "Spatially adaptive smoothing using a branch and bound algorithm"
+author: "Laura Marshall"
+date: "06/07/2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r description, eval=TRUE}
+# Describe your package
+fusen::fill_description(
+  pkg = here::here(),
+  fields = list(
+    Title = "Spatially adaptive smoothing using a brand and bound algorithm",
+    Description = "This package uses a branch and bound algorithm to select specific knot locations in order to perform spatially adaptive smoothing. More knot locations in specific areas will allow for more flexibilty where required.",
+    `Authors@R` = c(
+      person("Laura", "Marshall", email = "lhm@st-andrews.ac.uk", role = c("aut", "cre")))
+  )
+)
+# Define License with use_*_license()
+usethis::use_mit_license("Laura Marshall")
+# Use git
+usethis::use_git()
+usethis::use_build_ignore(".git")
+```
+
+## Create example dataset
+
+This creates an example dataset for demonstrating the methods on.
+
+```{r function, echo=FALSE}
+#' Generates a test benchmark dataset with varying degrees of wiggliness
+#' 
+#' @return data.frame with response column and explanatory variable x column with . It also contains a column truth which is the underlying function without added error. 
+#' @importFrom stats dnorm rnorm
+#' @export
+#' @examples
+generate_eg_data <- function(){
+  # Generate a function
+  x <- seq(1, 100, length = 100)
+  y <- dnorm(x, 0, 30)*75
+  # Sin wave
+  y.sin <- (sin(x/(0.5*pi))+20)/10-1.8
+  # Logistic curve
+  y.logistic <- 0.75/(1+exp(-0.2*(x-75)))
+  y.combined <- y + y.sin*y.logistic*1.5
+  # Add some error
+  err <- rnorm(100, 0, 0.05)
+  # Return the dataset
+  data.frame(x = x, response = y+y.combined+err, truth = y+y.combined)
+}
+
+```
+
+An example of using this function
+
+```{r examples, echo=TRUE}
+test.data <- generate_eg_data()
+plot(test.data$response~test.data$x, pch = 20)
+lines(test.data$truth~test.data$x, col = 2, lwd = 1.5)
+```
+
+Testing that this function works
+
+```{r tests}
+test_that("my_median works properly and show error if needed", {
+  test.data <- generate_eg_data()
+  expect_equal(c("x", "response", "truth"), names(test.data))
+})
+```
