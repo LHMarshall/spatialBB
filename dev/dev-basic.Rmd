@@ -19,8 +19,7 @@ fusen::fill_description(
     Title = "Spatially adaptive smoothing using a brand and bound algorithm",
     Description = "This package uses a branch and bound algorithm to select specific knot locations in order to perform spatially adaptive smoothing. More knot locations in specific areas will allow for more flexibilty where required.",
     `Authors@R` = c(
-      person("Laura", "Marshall", email = "lhm@st-andrews.ac.uk", role = c("aut", "cre")),
-    )
+      person("Laura", "Marshall", email = "lhm@st-andrews.ac.uk", role = c("aut", "cre")))
   )
 )
 # Define License with use_*_license()
