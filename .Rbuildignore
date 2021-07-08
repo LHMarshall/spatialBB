@@ -1,4 +1,4 @@
 ^LICENSE\.md$
-.Rproj.user
-*.Rproj
 ^\.git$
+^spatialBB\.Rproj$
+^\.Rproj\.user$
