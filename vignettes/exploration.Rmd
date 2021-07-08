@@ -1,0 +1,37 @@
+---
+title: "exploration"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{exploration}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(spatialBB)
+```
+
+## Create example dataset
+
+This creates an example dataset for demonstrating the methods on.
+
+
+An example of using this function
+
+
+```{r examples, echo = TRUE}
+test.data <- generate_eg_data()
+plot(test.data$response~test.data$x, pch = 20)
+lines(test.data$truth~test.data$x, col = 2, lwd = 1.5)
+```
+
+Testing that this function works
+
+

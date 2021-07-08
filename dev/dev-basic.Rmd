@@ -40,7 +40,7 @@ This creates an example dataset for demonstrating the methods on.
 #' @importFrom stats dnorm rnorm
 #' @export
 #' @examples
-generate.eg.data <- function(){
+generate_eg_data <- function(){
   # Generate a function
   x <- seq(1, 100, length = 100)
   y <- dnorm(x, 0, 30)*75
@@ -60,7 +60,7 @@ generate.eg.data <- function(){
 An example of using this function
 
 ```{r examples, echo=TRUE}
-test.data <- generate.eg.data()
+test.data <- generate_eg_data()
 plot(test.data$response~test.data$x, pch = 20)
 lines(test.data$truth~test.data$x, col = 2, lwd = 1.5)
 ```
@@ -69,6 +69,7 @@ Testing that this function works
 
 ```{r tests}
 test_that("my_median works properly and show error if needed", {
+  test.data <- generate_eg_data()
   expect_equal(c("x", "response", "truth"), names(test.data))
 })
 ```
